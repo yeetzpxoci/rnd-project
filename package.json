@@ -1,0 +1,24 @@
+{
+  "name": "rnd_project",
+  "version": "1.0.0",
+  "description": "An interactive browser game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeetzpxoci/rnd_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yeetzpxoci/rnd_project/issues"
+  },
+  "homepage": "https://github.com/yeetzpxoci/rnd_project#readme",
+  "devDependencies": {
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2"
+  }
+}
