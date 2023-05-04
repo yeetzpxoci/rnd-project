@@ -55,3 +55,7 @@ body {
     border: 0;
     cursor: pointer;
 }
+
+.letter {
+    position: absolute;
+}
