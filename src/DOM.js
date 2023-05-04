@@ -19,14 +19,17 @@ function DOM() {
 
             const startButton = document.createElement("button");
             startButton.setAttribute("id", "start-button");
-            startButton.textContent = "START GAME";
-            buttonContainer.appendChild(startButton);
+            startButton.innerText = "START GAME";
 
             const difficultyButton = document.createElement("button");
             difficultyButton.setAttribute("id", "difficulty-button");
-            difficultyButton.textContent = "DIFFICULTY";
-            buttonContainer.appendChild(difficultyButton);
+            difficultyButton.innerText = "DIFFICULTY";
 
+            const modeButton = document.createElement("button");
+            modeButton.setAttribute("id", "mode-button");
+            modeButton.innerText = "MODE";
+
+            buttonContainer.append(startButton, difficultyButton, modeButton);
             document.body.appendChild(startContainer);
         },
 
