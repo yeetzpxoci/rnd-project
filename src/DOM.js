@@ -33,17 +33,20 @@ function DOM() {
             document.body.appendChild(startContainer);
         },
 
-        renderGame(letterArray) {
+        renderGamePage() {
             const gameContainer = document.createElement('div');
             gameContainer.id = 'game-container';
+            document.body.append(gameContainer);
+        },
 
+        renderLetters(letterArray) {
+            const gameContainer = document.querySelector('#game-container');
+            gameContainer.innerHTML = '';
             for (let i = 0; i < letterArray.length; i++) {
                 const newLetter = document.createElement('p');
                 newLetter.innerText = letterArray[i];
                 gameContainer.appendChild(newLetter);
             }
-
-            document.body.append(gameContainer);
         }
     }
 }
