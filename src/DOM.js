@@ -50,9 +50,14 @@ function DOM() {
                 newLetter.style.left = letterArray[i].x + 'px';
                 newLetter.style.top = letterArray[i].y + 'px';
                 gameContainer.appendChild(newLetter);
+
+                document.addEventListener
+
             }
         }
     }
 }
 
 export { DOM };
+
+

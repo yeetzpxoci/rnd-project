@@ -14,7 +14,7 @@ function game() {
         totalScore: 0,
         time: 0.5, // in minutes
         difficulty: 0,
-        mode: 'time',
+        mode: 'timer',
 
         spawnRandomLetter() {
             const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
