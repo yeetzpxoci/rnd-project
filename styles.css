@@ -56,6 +56,11 @@ body {
     cursor: pointer;
 }
 
+#start-button:hover, #difficulty-button:hover, #mode-button:hover {
+    color: #D47AE8;
+    font-size: 4rem;
+}
+
 .letter {
     position: absolute;
 }
