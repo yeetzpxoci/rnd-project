@@ -17,11 +17,10 @@ function initializeButtons() {
         newGame.startGame(1000);
         setInterval(function () {dom.renderLetters(newGame.letters)}, 100);
     });
-    document.getElementById('difficulty-button').addEventListener('click', dom.resetPage);
-    document.getElementById('mode-button').addEventListener('click', dom.resetPage);
+    
+    document.getElementById('difficulty-button').addEventListener('click', console.log('hey'));
+    document.getElementById('mode-button').addEventListener('click', console.log('hey'));
 }
-
-console.log()
 
 
 initializeButtons();

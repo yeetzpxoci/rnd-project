@@ -1,7 +1,5 @@
 function DOM() {
     return {   
-        letterPositions: [],
-
         resetPage() {
             document.body.innerHTML = '';
         },
@@ -25,11 +23,11 @@ function DOM() {
 
             const difficultyButton = document.createElement("button");
             difficultyButton.setAttribute("id", "difficulty-button");
-            difficultyButton.innerText = "DIFFICULTY";
+            difficultyButton.innerText = "DIFFICULTY: EASY";
 
             const modeButton = document.createElement("button");
             modeButton.setAttribute("id", "mode-button");
-            modeButton.innerText = "MODE";
+            modeButton.innerText = "MODE: TIMER";
 
             buttonContainer.append(startButton, difficultyButton, modeButton);
             document.body.appendChild(startContainer);
@@ -44,21 +42,13 @@ function DOM() {
         renderLetters(letterArray) {
             const gameContainer = document.querySelector('#game-container');
             gameContainer.innerHTML = '';
-            for (let i = 0; i < letterArray.length; i++) {
-                let letterPosition = this.letterPositions[i];
-                if (!letterPosition) {
-                    letterPosition = {
-                        x: Math.floor(Math.random() * window.innerWidth),
-                        y: Math.floor(Math.random() * window.innerHeight)
-                    };
-                    this.letterPositions[i] = letterPosition;
-                }
 
+            for (let i = 0; i < letterArray.length; i++) {
                 const newLetter = document.createElement('p');
-                newLetter.innerText = letterArray[i];
-                newLetter.style.position = 'absolute';
-                newLetter.style.left = letterPosition.x + 'px';
-                newLetter.style.top = letterPosition.y + 'px';
+                newLetter.innerText = letterArray[i].letter;
+                newLetter.className = 'letter';
+                newLetter.style.left = letterArray[i].x + 'px';
+                newLetter.style.top = letterArray[i].y + 'px';
                 gameContainer.appendChild(newLetter);
 
                 document.addEventListener
