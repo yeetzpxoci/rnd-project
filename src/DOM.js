@@ -27,6 +27,11 @@ function DOM() {
             difficultyButton.textContent = "DIFFICULTY";
             buttonContainer.appendChild(difficultyButton);
 
+            const modeButton = document.createElement("button");
+            difficultyButton.setAttribute("id", "mode-button");
+            difficultyButton.textContent = "MODE";
+            buttonContainer.appendChild(modeButton);
+
             document.body.appendChild(startContainer);
         },
 
