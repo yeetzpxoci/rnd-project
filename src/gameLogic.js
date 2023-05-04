@@ -35,6 +35,10 @@ function game() {
                     clearInterval(intervalID);
                 }
             }, interval);
+        },
+
+        removeLetter() {
+            this.letters.shift();
         }
     }
 }
