@@ -22,17 +22,18 @@ function game() {
 
             const newLetter = letter(alphabet.charAt(randomIndex));
 
-            let randomX = Math.floor(Math.random() * (window.innerWidth - 32)) + 16;
-            let randomY = Math.floor(Math.random() * (window.innerHeight - 32)) + 16;
+            let randomX = Math.floor(Math.random() * (window.innerWidth - 200)) + 100;
+            let randomY = Math.floor(Math.random() * (window.innerHeight - 200)) + 100;
+            console.log(window.innerWidth, window.innerHeight)
 
-            const gap = 16;
+            const gap = 200;
 
             let overlaps;
 
             // prevent overlapping
             do {
-                randomX = Math.floor(Math.random() * (window.innerWidth - 32)) + 16;
-                randomY = Math.floor(Math.random() * (window.innerHeight - 32)) + 16;
+                randomX = Math.floor(Math.random() * (window.innerWidth - 200)) + 100;
+                randomY = Math.floor(Math.random() * (window.innerHeight - 200)) + 100;
 
                 overlaps = false;
 
@@ -44,6 +45,8 @@ function game() {
                     }
                 }
             } while (overlaps);
+
+            this.positions.push({x: randomX, y: randomY});
 
             newLetter.x = randomX;
             newLetter.y = randomY;
