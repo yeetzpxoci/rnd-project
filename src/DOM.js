@@ -34,7 +34,9 @@ function DOM() {
         },
 
         renderGame(letterArray) {
-            // render the letters on the screen
+            const gameContainer = document.createElement('div');
+            gameContainer.id = 'game-container';
+            document.body.append(gameContainer);
         }
     }
 }
