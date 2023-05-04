@@ -6,16 +6,15 @@ const dom = DOM();
 const newGame = game();
 
 dom.renderStartPage();
-newGame.startGame(1000);
 
 function initializeButtons() {
     document.getElementById('start-button').addEventListener('click', function () {
         dom.resetPage();
-        newGame.startGame();
-        dom.renderGame();
+        newGame.startGame(1000);
+        setInterval(function () {dom.renderGame(newGame.letters)}, 100);
     });
     document.getElementById('difficulty-button').addEventListener('click', dom.renderStartPage);
-    document.getElementById('level-button').addEventListener('click', dom.resetPage);
+    document.getElementById('mode-button').addEventListener('click', dom.resetPage);
 }
 
 initializeButtons();

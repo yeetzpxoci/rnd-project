@@ -36,6 +36,13 @@ function DOM() {
         renderGame(letterArray) {
             const gameContainer = document.createElement('div');
             gameContainer.id = 'game-container';
+
+            for (let i = 0; i < letterArray.length; i++) {
+                const newLetter = document.createElement('p');
+                newLetter.innerText = letterArray[i];
+                gameContainer.appendChild(newLetter);
+            }
+
             document.body.append(gameContainer);
         }
     }
