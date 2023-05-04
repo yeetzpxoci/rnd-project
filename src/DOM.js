@@ -60,9 +60,14 @@ function DOM() {
                 newLetter.style.left = letterPosition.x + 'px';
                 newLetter.style.top = letterPosition.y + 'px';
                 gameContainer.appendChild(newLetter);
+
+                document.addEventListener
+
             }
         }
     }
 }
 
 export { DOM };
+
+
