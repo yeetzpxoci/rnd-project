@@ -18,4 +18,6 @@ function initializeButtons() {
     document.getElementById('mode-button').addEventListener('click', dom.resetPage);
 }
 
+console.log()
+
 initializeButtons();

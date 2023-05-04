@@ -25,14 +25,16 @@ body {
 }
 
 #game-container {
-    
+    color: white;
+    font-size: 4rem;
+    font-family: 'Sigmar', cursive;
 }
 
 #title {
-    font-size: 8rem;
-    margin-top: 6rem;
     color: white;
+    font-size: 8rem;
     font-family: 'Sigmar', cursive;
+    margin-top: 6rem;
     user-select: none;
 }
 
