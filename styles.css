@@ -37,7 +37,7 @@ body {
     margin-top: 4rem;
 }
 
-#start-button, #difficulty-button, #level-button {
+#start-button, #difficulty-button, #mode-button {
     font-size: 3rem;
     font-family: 'Sigmar', cursive;
     color: white;
