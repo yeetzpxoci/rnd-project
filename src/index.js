@@ -14,8 +14,8 @@ function initializeButtons() {
         newGame.startGame(1000);
         setInterval(function () {dom.renderLetters(newGame.letters)}, 100);
     });
-    document.getElementById('difficulty-button').addEventListener('click', changeDifficulty);
-    document.getElementById('mode-button').addEventListener('click', changeMode);
+    document.getElementById('difficulty-button').addEventListener('click', console.log('hey'));
+    document.getElementById('mode-button').addEventListener('click', console.log('hey'));
 }
 
 initializeButtons();

@@ -1,8 +1,9 @@
 function letter(letter) {
     return {
         letter: letter,
-        point: 10,
-        speed: 1,
+        point: 0,
+        x: 0,
+        y: 0, 
     }
 }
 
@@ -17,7 +18,9 @@ function game() {
         spawnRandomLetter() {
             const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const randomIndex = Math.floor(Math.random() * alphabet.length);
-            const newLetter = alphabet.charAt(randomIndex);
+            const newLetter = letter(alphabet.charAt(randomIndex));
+            newLetter.x = Math.floor(Math.random() * window.innerWidth);
+            newLetter.y = Math.floor(Math.random() * window.innerHeight);
             this.letters.push(newLetter);
             console.log(newLetter);
         },

@@ -44,20 +44,11 @@ function DOM() {
             gameContainer.innerHTML = '';
 
             for (let i = 0; i < letterArray.length; i++) {
-                let letterPosition = this.letterPositions[i];
-                if (!letterPosition) {
-                    letterPosition = {
-                        x: Math.floor(Math.random() * window.innerWidth),
-                        y: Math.floor(Math.random() * window.innerHeight)
-                    };
-                    this.letterPositions[i] = letterPosition;
-                }
-
                 const newLetter = document.createElement('p');
-                newLetter.innerText = letterArray[i];
-                newLetter.style.position = 'absolute';
-                newLetter.style.left = letterPosition.x + 'px';
-                newLetter.style.top = letterPosition.y + 'px';
+                newLetter.innerText = letterArray[i].letter;
+                newLetter.className = 'letter';
+                newLetter.style.left = letterArray[i].x + 'px';
+                newLetter.style.top = letterArray[i].y + 'px';
                 gameContainer.appendChild(newLetter);
             }
         }
