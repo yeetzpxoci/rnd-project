@@ -54,7 +54,7 @@ function initializeButtons() {
                 if(firstLetter.innerText === event.key.toUpperCase()){
                     firstLetter.remove();
                     newGame.removeLetter();
-                    newGame.totalScore++;
+                    newGame.totalScore += newGame.difficulty + 1;
                     score.innerHTML = newGame.totalScore;
                     console.log(newGame.totalScore);
                 }
