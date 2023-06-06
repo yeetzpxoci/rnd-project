@@ -34,8 +34,15 @@ function changeMode() {
 function initializeButtons() {
     document.getElementById('start-button').addEventListener('click', function () {
         dom.resetPage();
-        dom.renderGamePage(1);
-        newGame.startGame(1);
+
+        if (newGame.mode === "timer") {
+            dom.renderTimerGamePage(1);
+            newGame.startTimerGame(1);
+        } else {
+            dom.renderSurvivalGamePage();
+            newGame.startSurvivalGame();
+        }
+
         setInterval(function () {
             dom.renderLetters(newGame.letters)}, 1000 / (newGame.difficulty + 1));
 
