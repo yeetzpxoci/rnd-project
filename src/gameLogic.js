@@ -56,7 +56,7 @@ function game() {
             console.log(newLetter);
         },
 
-        startGame(time) {
+        startTimerGame(time) {
             let seconds = time * 60;
             let intervalID = setInterval(() => {
                 if (seconds != 0) {
@@ -64,6 +64,16 @@ function game() {
                         this.spawnRandomLetter();
                     }
                     seconds--;
+                } else {
+                    clearInterval(intervalID);
+                }
+            }, 1000 / (this.difficulty + 1));
+        },
+
+        startSurvivalGame() {
+            let intervalID = setInterval(() => {
+                if (this.letters.length < 20) {
+                    this.spawnRandomLetter();
                 } else {
                     clearInterval(intervalID);
                 }
