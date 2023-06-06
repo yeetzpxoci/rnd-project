@@ -43,7 +43,9 @@ function initializeButtons() {
             if(!(firstLetter === null)) {
                 if(firstLetter.innerText === event.key.toUpperCase()){
                     firstLetter.remove();
-                    newGame.removeLetter(); 
+                    newGame.removeLetter();
+                    newGame.totalScore++;
+                    console.log(newGame.totalScore);
                 }
             }
         });
