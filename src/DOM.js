@@ -33,15 +33,30 @@ function DOM() {
             document.body.appendChild(startContainer);
         },
 
-        renderGamePage() {
-            const gameContainer = document.createElement('div');
-            gameContainer.id = 'game-container';
+        renderGamePage(time) {
+            const gameContainer = document.createElement('div')
+            gameContainer.id = 'game-container'
+
+            const gameWrapper = document.createElement('div');
+            gameWrapper.id = 'game-wrapper';
+
+            let seconds = time * 60;
+
+            const timer = document.createElement('span');
+            timer.innerHTML = seconds;
+
+            setInterval(function () {
+                seconds -= 1;
+                timer.innerHTML = seconds;
+            }, 1000);
+
+            gameContainer.append(timer, gameWrapper);
             document.body.append(gameContainer);
         },
 
         renderLetters(letterArray) {
-            const gameContainer = document.querySelector('#game-container');
-            gameContainer.innerHTML = '';
+            const gameWrapper = document.querySelector('#game-wrapper');
+            gameWrapper.innerHTML = '';
 
             for (let i = 0; i < letterArray.length; i++) {
                 const newLetter = document.createElement('p');
@@ -49,7 +64,7 @@ function DOM() {
                 newLetter.className = 'letter';
                 newLetter.style.left = letterArray[i].x + 'px';
                 newLetter.style.top = letterArray[i].y + 'px';
-                gameContainer.appendChild(newLetter);
+                gameWrapper.appendChild(newLetter);
             }
         }
     }
