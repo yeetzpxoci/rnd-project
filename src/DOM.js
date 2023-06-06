@@ -46,7 +46,12 @@ function DOM() {
             timer.innerHTML = seconds;
 
             setInterval(function () {
-                seconds -= 1;
+                if (seconds != 0) {
+                    seconds -= 1;
+                } else {
+                    clearInterval();
+                }
+
                 timer.innerHTML = seconds;
             }, 1000);
 
