@@ -36,15 +36,17 @@ function initializeButtons() {
         dom.resetPage();
 
         if (newGame.mode === "timer") {
-            dom.renderTimerGamePage(1);
+            dom.renderTimerGamePage(1, newGame.totalScore);
             newGame.startTimerGame(1);
         } else {
-            dom.renderSurvivalGamePage();
+            dom.renderSurvivalGamePage(newGame.totalScore);
             newGame.startSurvivalGame();
         }
 
         setInterval(function () {
             dom.renderLetters(newGame.letters)}, 1000 / (newGame.difficulty + 1));
+        
+        const score = document.getElementById('score');
 
         document.addEventListener('keydown', (event) => {
             const firstLetter = document.querySelector('.letter');
@@ -53,6 +55,7 @@ function initializeButtons() {
                     firstLetter.remove();
                     newGame.removeLetter();
                     newGame.totalScore++;
+                    score.innerHTML = newGame.totalScore;
                     console.log(newGame.totalScore);
                 }
             }
