@@ -14,6 +14,7 @@ function game() {
         totalScore: 0,
         difficulty: 0,
         mode: 'timer',
+        maxLetterOnScreen: 20,
 
         spawnRandomLetter() {
             const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -40,9 +41,10 @@ function game() {
                     const position = this.positions[i];
                     const distance = Math.sqrt((position.x - randomX) ** 2 + (position.y - randomY) ** 2);
                     if (distance < gap) {
-                        overlaps = true;    
+                        overlaps = true;        
                     }
                 }
+                console.log("!!!!")
             } while (overlaps);
 
             this.positions.push({x: randomX, y: randomY});

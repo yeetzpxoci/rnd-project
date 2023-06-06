@@ -1,3 +1,3 @@
--Implement modes
--Add points and highscore
--Add the time when the game starts 
+-Implement modes (Beza)
+-Add points and highscore (Daniel)
+-Add the time when the game starts (Yigit)
