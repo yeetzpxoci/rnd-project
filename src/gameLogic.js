@@ -60,7 +60,9 @@ function game() {
             let seconds = time * 60;
             let intervalID = setInterval(() => {
                 if (seconds != 0) {
-                    this.spawnRandomLetter();
+                    if (this.letters.length < 20) {
+                        this.spawnRandomLetter();
+                    }
                     seconds--;
                 } else {
                     clearInterval(intervalID);
