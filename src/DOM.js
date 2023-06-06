@@ -45,12 +45,15 @@ function DOM() {
             const timer = document.createElement('span');
             timer.innerHTML = seconds;
 
+            const score = document.createElement('span');
+            timer.innerHTML = "0";
+
             setInterval(function () {
                 seconds -= 1;
                 timer.innerHTML = seconds;
             }, 1000);
 
-            gameContainer.append(timer, gameWrapper);
+            gameContainer.append(score, timer, gameWrapper);
             document.body.append(gameContainer);
         },
 
