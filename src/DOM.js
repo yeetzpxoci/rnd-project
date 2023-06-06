@@ -40,13 +40,17 @@ function DOM() {
             const gameWrapper = document.createElement('div');
             gameWrapper.id = 'game-wrapper';
 
+            const timerScoreContainer = document.createElement('div');
+            timerScoreContainer.id = 'timer-score-container';
+
             let seconds = time * 60;
 
             const timer = document.createElement('span');
+            timer.id = 'timer';
             timer.innerHTML = seconds;
 
             const score = document.createElement('span');
-            score.innerHTML = totalScore;
+            score.innerHTML = 'Score:' + totalScore;
             score.id = 'score';
 
             setInterval(function () {
@@ -59,7 +63,8 @@ function DOM() {
                 timer.innerHTML = seconds;
             }, 1000);
 
-            gameContainer.append(score, timer, gameWrapper);
+            timerScoreContainer.append(score, timer);
+            gameContainer.append(timerScoreContainer, gameWrapper);
             document.body.append(gameContainer);
         },
 
@@ -70,11 +75,15 @@ function DOM() {
             const gameWrapper = document.createElement('div');
             gameWrapper.id = 'game-wrapper';
 
+            const timerScoreContainer = document.createElement('div');
+            timerScoreContainer.id = 'timer-score-container';
+
             const score = document.createElement('span');
-            score.innerHTML = totalScore;
+            score.innerHTML = 'Score:' + totalScore;
             score.id = 'score';
 
-            gameContainer.append(score, gameWrapper);
+            timerScoreContainer.append(score);
+            gameContainer.append(timerScoreContainer, gameWrapper);
             document.body.append(gameContainer);
         },
 

@@ -31,7 +31,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
 #game-wrapper {
@@ -75,4 +74,37 @@ body {
 
 .letter {
     position: absolute;
+}
+
+#end-container {
+
+}
+
+#end-menu {
+
+}
+
+#timer-score-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #D47AE8;
+    font-size: 3rem;
+    align-self: flex-end;
+}
+
+span {
+    padding: 0;
+}
+
+#score {
+    text-align: center;
+    width: 17rem;
+}
+
+#timer {
+    margin-top: -2rem;
+    text-align: center;
+    width: 10rem;
 }
