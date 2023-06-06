@@ -44,7 +44,6 @@ function game() {
                         overlaps = true;        
                     }
                 }
-                console.log("!!!!")
             } while (overlaps);
 
             this.positions.push({x: randomX, y: randomY});
@@ -82,6 +81,7 @@ function game() {
 
         removeLetter() {
             this.letters.shift();
+            this.positions.shift();
         }
     }
 }
