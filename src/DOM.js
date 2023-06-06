@@ -55,16 +55,18 @@ function DOM() {
         },
 
         renderLetters(letterArray) {
-            const gameWrapper = document.querySelector('#game-wrapper');
-            gameWrapper.innerHTML = '';
+            if (letterArray.length < 20) {
+                const gameWrapper = document.querySelector('#game-wrapper');
+                gameWrapper.innerHTML = '';
 
-            for (let i = 0; i < letterArray.length; i++) {
-                const newLetter = document.createElement('p');
-                newLetter.innerText = letterArray[i].letter;
-                newLetter.className = 'letter';
-                newLetter.style.left = letterArray[i].x + 'px';
-                newLetter.style.top = letterArray[i].y + 'px';
-                gameWrapper.appendChild(newLetter);
+                for (let i = 0; i < letterArray.length; i++) {
+                    const newLetter = document.createElement('p');
+                    newLetter.innerText = letterArray[i].letter;
+                    newLetter.className = 'letter';
+                    newLetter.style.left = letterArray[i].x + 'px';
+                    newLetter.style.top = letterArray[i].y + 'px';
+                    gameWrapper.appendChild(newLetter);
+                }                
             }
         }
     }
