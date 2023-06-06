@@ -1,3 +1,5 @@
+import { initializeButtons } from ".";
+
 function DOM() {
     return {   
         resetPage() {
@@ -5,6 +7,8 @@ function DOM() {
         },
 
         renderStartPage() {
+            document.body.innerHTML = '';
+
             const startContainer = document.createElement("div");
             startContainer.setAttribute("id", "start-container");
 
@@ -31,9 +35,13 @@ function DOM() {
 
             buttonContainer.append(startButton, difficultyButton, modeButton);
             document.body.appendChild(startContainer);
+
+            initializeButtons();
         },
 
         renderTimerGamePage(time, totalScore) {
+            document.body.innerHTML = '';
+
             const gameContainer = document.createElement('div')
             gameContainer.id = 'game-container'
 
@@ -69,6 +77,8 @@ function DOM() {
         },
 
         renderSurvivalGamePage(totalScore) {
+            document.body.innerHTML = '';
+
             const gameContainer = document.createElement('div')
             gameContainer.id = 'game-container'
 
@@ -101,6 +111,19 @@ function DOM() {
                     gameWrapper.appendChild(newLetter);
                 }                
             }
+        },
+
+        endGame(gameMode) {
+            const gameOverMenu = document.createElement('div');
+            gameOverMenu.id = 'game-over-menu';
+            
+            const menuButton = document.createElement('span');
+            menuButton.id = 'button-menu';
+            menuButton.innerHTML = 'Menu';
+            menuButton.onclick = this.renderStartPage;
+
+            gameOverMenu.append(menuButton)
+            document.body.append(gameOverMenu)
         }
     }
 }
