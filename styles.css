@@ -28,6 +28,18 @@ body {
     color: white;
     font-size: 4rem;
     font-family: 'Sigmar', cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-wrapper {
+    color: white;
+    font-size: 4rem;
+    font-family: 'Sigmar', cursive;
+    height: 100%;
+    width: 100%;
 }
 
 #title {
