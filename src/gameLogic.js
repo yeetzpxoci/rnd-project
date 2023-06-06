@@ -12,7 +12,6 @@ function game() {
         letters: [],
         positions: [],
         totalScore: 0,
-        time: 0.5, // in minutes
         difficulty: 0,
         mode: 'timer',
 
@@ -55,8 +54,8 @@ function game() {
             console.log(newLetter);
         },
 
-        startGame(interval) {
-            let seconds = this.time * 60;
+        startGame(time) {
+            let seconds = time * 60;
             let intervalID = setInterval(() => {
                 if (seconds != 0) {
                     this.spawnRandomLetter();
@@ -64,7 +63,7 @@ function game() {
                 } else {
                     clearInterval(intervalID);
                 }
-            }, interval);
+            }, 1000 / (this.difficulty + 1));
         },
 
         removeLetter() {

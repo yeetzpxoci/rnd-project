@@ -35,8 +35,8 @@ function initializeButtons() {
     document.getElementById('start-button').addEventListener('click', function () {
         dom.resetPage();
         dom.renderGamePage();
-        newGame.startGame(1000);
-        setInterval(function () {dom.renderLetters(newGame.letters)}, 100);
+        newGame.startGame(1);
+        setInterval(function () {dom.renderLetters(newGame.letters)}, 1000 / (newGame.difficulty + 1));
 
         document.addEventListener('keydown', (event) => {
             const firstLetter = document.querySelector('.letter');
