@@ -2,9 +2,7 @@ import { DOM } from './DOM.js'
 import { game } from './gameLogic.js'
 
 const dom = DOM();
-const newGame = game();
-
-dom.renderStartPage();
+const newGame = new game();
 
 function changeDifficulty() {
     //if difficulty is 0, it should be 1...
@@ -31,50 +29,51 @@ function changeMode() {
 }
 
 function startGame() {
-    dom.renderStartPage();
+    dom.resetPage();
+
+    if (newGame.mode === "timer") {
+        dom.renderTimerGamePage(1, newGame.totalScore);
+        newGame.startTimerGame(1);
+    } else {
+        dom.renderSurvivalGamePage(newGame.totalScore);
+        newGame.startSurvivalGame();
+    }
+
+    const renderInterval = setInterval(function () {
+        if (newGame.gameOver) {
+            clearInterval(renderInterval);
+            newGame.resetGame();
+            dom.endGame(initializeButtons); // Pass the game mode and the callback function
+        } else {
+            dom.renderLetters(newGame.letters);
+            const score = document.getElementById('score');
+            score.innerText = 'Score:' + newGame.totalScore; // Update the score value
+        }
+    }, 1000 / (newGame.difficulty + 1));
+
+    const score = document.getElementById('score');
+
+    document.addEventListener('keydown', (event) => {
+        const firstLetter = document.querySelector('.letter');
+        if (!(firstLetter === null)) {
+            if (firstLetter.innerText === event.key.toUpperCase()) {
+                firstLetter.remove();
+                newGame.removeLetter();
+                newGame.totalScore += (newGame.difficulty + 1);
+                score.style.color = "black";    
+                score.innerText = 'Score:' + newGame.totalScore;
+                console.log(score.innerText, newGame.totalScore);
+            }
+        }
+    });
 }
 
 function initializeButtons() {
-    document.getElementById('start-button').addEventListener('click', function () {
-        dom.resetPage();
-
-        if (newGame.mode === "timer") {
-            dom.renderTimerGamePage(1, newGame.totalScore);
-            newGame.startTimerGame(1);
-        } else {
-            dom.renderSurvivalGamePage(newGame.totalScore);
-            newGame.startSurvivalGame();
-        }
-
-        const renderInterval = setInterval(function () {
-            if (newGame.gameOver) {
-                clearInterval(renderInterval);
-                newGame.resetGame();
-                dom.endGame(newGame.mode);
-            } else {
-                dom.renderLetters(newGame.letters);
-            }
-        }, 1000 / (newGame.difficulty + 1));
-        
-        const score = document.getElementById('score');
-
-        document.addEventListener('keydown', (event) => {
-            const firstLetter = document.querySelector('.letter');
-            if(!(firstLetter === null)) {
-                if(firstLetter.innerText === event.key.toUpperCase()){
-                    firstLetter.remove();
-                    newGame.removeLetter();
-                    newGame.totalScore += newGame.difficulty + 1;
-                    score.innerHTML = 'Score:' + newGame.totalScore;
-                    console.log(newGame.totalScore);
-                }
-            }
-        });
-    });
+    document.getElementById('start-button').addEventListener('click', startGame);
     document.getElementById('difficulty-button').addEventListener('click', changeDifficulty);
     document.getElementById('mode-button').addEventListener('click', changeMode);
 }
 
-startGame();
+dom.renderStartPage();
+initializeButtons();
 
-export { initializeButtons };
