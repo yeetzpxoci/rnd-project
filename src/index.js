@@ -64,8 +64,7 @@ function startGame() {
             if (firstLetter.innerText === event.key.toUpperCase()) {
                 firstLetter.remove();
                 newGame.removeLetter();
-                newGame.totalScore += (newGame.difficulty + 1);
-                score.style.color = "black";    
+                newGame.totalScore += (newGame.difficulty + 1);  
                 score.innerText = 'Score:' + newGame.totalScore;
                 console.log(score.innerText, newGame.totalScore);
             }
