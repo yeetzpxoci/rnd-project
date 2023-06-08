@@ -1,5 +1,3 @@
-import { initializeButtons } from ".";
-
 function DOM() {
     return {   
         resetPage() {
@@ -35,8 +33,6 @@ function DOM() {
 
             buttonContainer.append(startButton, difficultyButton, modeButton);
             document.body.appendChild(startContainer);
-
-            initializeButtons();
         },
 
         renderTimerGamePage(time, totalScore) {
@@ -113,17 +109,23 @@ function DOM() {
             }
         },
 
-        endGame(gameMode) {
+        endGame(callback) {
             const gameOverMenu = document.createElement('div');
             gameOverMenu.id = 'game-over-menu';
-            
+
             const menuButton = document.createElement('span');
             menuButton.id = 'button-menu';
             menuButton.innerHTML = 'Menu';
-            menuButton.onclick = this.renderStartPage;
 
-            gameOverMenu.append(menuButton)
-            document.body.append(gameOverMenu)
+            const dom = this; 
+
+            menuButton.onclick = function () {
+                dom.renderStartPage();
+                callback();
+            };
+
+            gameOverMenu.append(menuButton);
+            document.body.append(gameOverMenu);
         }
     }
 }
