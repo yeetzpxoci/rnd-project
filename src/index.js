@@ -80,7 +80,5 @@ function initializeButtons() {
 
 dom.renderStartPage();
 initializeButtons();
-if(JSON.parse(localStorage.getItem('highscore')) != null) {
-    localStorage.setItem('highscore', JSON.stringify(0));
-}
+
 

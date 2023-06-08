@@ -138,3 +138,10 @@ span {
     color: #D47AE8;
     font-size: 4rem;
 }
+
+#highscore {
+    font-size: 3rem;
+    font-family: 'Sigmar', cursive;
+    color: white;
+    height: 6rem;
+}

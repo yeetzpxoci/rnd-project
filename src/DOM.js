@@ -31,6 +31,13 @@ function DOM() {
             modeButton.setAttribute("id", "mode-button");
             modeButton.innerText = "MODE: TIMER";
 
+            if (JSON.parse(localStorage.getItem("highscore") != null && localStorage.getItem("highscore") != 0)) {
+                const highscore = document.createElement("span");
+                highscore.setAttribute("id", "highscore");
+                highscore.innerText = "HIGHSCORE:" + JSON.parse(localStorage.getItem("highscore"));
+                startContainer.append(highscore);
+            }
+
             buttonContainer.append(startButton, difficultyButton, modeButton);
             document.body.appendChild(startContainer);
         },
