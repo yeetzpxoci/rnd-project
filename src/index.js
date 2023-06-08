@@ -4,6 +4,8 @@ import { game } from './gameLogic.js'
 const dom = DOM();
 const newGame = new game();
 
+
+
 function changeDifficulty() {
     //if difficulty is 0, it should be 1...
     if (newGame.difficulty == 0) {
@@ -41,6 +43,9 @@ function startGame() {
 
     const renderInterval = setInterval(function () {
         if (newGame.gameOver) {
+            if(JSON.parse(localStorage.getItem('highscore')) < newGame.totalScore) {
+                localStorage.setItem('highscore', JSON.stringify(newGame.totalScore));
+            }
             clearInterval(renderInterval);
             newGame.resetGame();
             dom.endGame(initializeButtons); // Pass the game mode and the callback function
@@ -76,4 +81,7 @@ function initializeButtons() {
 
 dom.renderStartPage();
 initializeButtons();
+if(JSON.parse(localStorage.getItem('highscore')) != null) {
+    localStorage.setItem('highscore', JSON.stringify(0));
+}
 
