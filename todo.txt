@@ -1,3 +1,2 @@
 -Implement modes (Beza)
 -Add points and highscore (Daniel)
--Add the time when the game starts (Yigit)

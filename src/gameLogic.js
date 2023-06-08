@@ -15,6 +15,7 @@ function game() {
         difficulty: 0,
         mode: 'timer',
         maxLetterOnScreen: 20,
+        gameOver: false,
 
         spawnRandomLetter() {
             const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -51,19 +52,22 @@ function game() {
             newLetter.x = randomX;
             newLetter.y = randomY;
             this.letters.push(newLetter);
-            
-            console.log(newLetter);
         },
 
         startTimerGame(time) {
             let seconds = time * 60;
+
+            setInterval(() => {
+                seconds--;
+            }, 1000)
+
             let intervalID = setInterval(() => {
                 if (seconds != 0) {
                     if (this.letters.length < 20) {
                         this.spawnRandomLetter();
                     }
-                    seconds--;
                 } else {
+                    this.gameOver = true;
                     clearInterval(intervalID);
                 }
             }, 1000 / (this.difficulty + 1));
@@ -74,6 +78,7 @@ function game() {
                 if (this.letters.length < 20) {
                     this.spawnRandomLetter();
                 } else {
+                    this.gameOver = true;
                     clearInterval(intervalID);
                 }
             }, 1000 / (this.difficulty + 1));
@@ -82,6 +87,13 @@ function game() {
         removeLetter() {
             this.letters.shift();
             this.positions.shift();
+        },
+
+        resetGame() {
+            this.letters = [];
+            this.positions = [];
+            this.gameOver = false;
+            this.totalScore = 0;
         }
     }
 }

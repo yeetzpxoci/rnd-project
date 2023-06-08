@@ -1,3 +1,5 @@
+import { initializeButtons } from ".";
+
 function DOM() {
     return {   
         resetPage() {
@@ -5,6 +7,8 @@ function DOM() {
         },
 
         renderStartPage() {
+            document.body.innerHTML = '';
+
             const startContainer = document.createElement("div");
             startContainer.setAttribute("id", "start-container");
 
@@ -31,22 +35,30 @@ function DOM() {
 
             buttonContainer.append(startButton, difficultyButton, modeButton);
             document.body.appendChild(startContainer);
+
+            initializeButtons();
         },
 
         renderTimerGamePage(time, totalScore) {
+            document.body.innerHTML = '';
+
             const gameContainer = document.createElement('div')
             gameContainer.id = 'game-container'
 
             const gameWrapper = document.createElement('div');
             gameWrapper.id = 'game-wrapper';
 
+            const timerScoreContainer = document.createElement('div');
+            timerScoreContainer.id = 'timer-score-container';
+
             let seconds = time * 60;
 
             const timer = document.createElement('span');
+            timer.id = 'timer';
             timer.innerHTML = seconds;
 
             const score = document.createElement('span');
-            score.innerHTML = totalScore;
+            score.innerHTML = 'Score:' + totalScore;
             score.id = 'score';
 
             setInterval(function () {
@@ -59,22 +71,29 @@ function DOM() {
                 timer.innerHTML = seconds;
             }, 1000);
 
-            gameContainer.append(score, timer, gameWrapper);
+            timerScoreContainer.append(score, timer);
+            gameContainer.append(timerScoreContainer, gameWrapper);
             document.body.append(gameContainer);
         },
 
         renderSurvivalGamePage(totalScore) {
+            document.body.innerHTML = '';
+
             const gameContainer = document.createElement('div')
             gameContainer.id = 'game-container'
 
             const gameWrapper = document.createElement('div');
             gameWrapper.id = 'game-wrapper';
 
+            const timerScoreContainer = document.createElement('div');
+            timerScoreContainer.id = 'timer-score-container';
+
             const score = document.createElement('span');
-            score.innerHTML = totalScore;
+            score.innerHTML = 'Score:' + totalScore;
             score.id = 'score';
 
-            gameContainer.append(score, gameWrapper);
+            timerScoreContainer.append(score);
+            gameContainer.append(timerScoreContainer, gameWrapper);
             document.body.append(gameContainer);
         },
 
@@ -92,6 +111,19 @@ function DOM() {
                     gameWrapper.appendChild(newLetter);
                 }                
             }
+        },
+
+        endGame(gameMode) {
+            const gameOverMenu = document.createElement('div');
+            gameOverMenu.id = 'game-over-menu';
+            
+            const menuButton = document.createElement('span');
+            menuButton.id = 'button-menu';
+            menuButton.innerHTML = 'Menu';
+            menuButton.onclick = this.renderStartPage;
+
+            gameOverMenu.append(menuButton)
+            document.body.append(gameOverMenu)
         }
     }
 }

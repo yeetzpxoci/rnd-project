@@ -1,7 +1,6 @@
 import { DOM } from './DOM.js'
 import { game } from './gameLogic.js'
 
-
 const dom = DOM();
 const newGame = game();
 
@@ -31,6 +30,10 @@ function changeMode() {
     }
 }
 
+function startGame() {
+    dom.renderStartPage();
+}
+
 function initializeButtons() {
     document.getElementById('start-button').addEventListener('click', function () {
         dom.resetPage();
@@ -43,8 +46,15 @@ function initializeButtons() {
             newGame.startSurvivalGame();
         }
 
-        setInterval(function () {
-            dom.renderLetters(newGame.letters)}, 1000 / (newGame.difficulty + 1));
+        const renderInterval = setInterval(function () {
+            if (newGame.gameOver) {
+                clearInterval(renderInterval);
+                newGame.resetGame();
+                dom.endGame(newGame.mode);
+            } else {
+                dom.renderLetters(newGame.letters);
+            }
+        }, 1000 / (newGame.difficulty + 1));
         
         const score = document.getElementById('score');
 
@@ -55,7 +65,7 @@ function initializeButtons() {
                     firstLetter.remove();
                     newGame.removeLetter();
                     newGame.totalScore += newGame.difficulty + 1;
-                    score.innerHTML = newGame.totalScore;
+                    score.innerHTML = 'Score:' + newGame.totalScore;
                     console.log(newGame.totalScore);
                 }
             }
@@ -65,4 +75,6 @@ function initializeButtons() {
     document.getElementById('mode-button').addEventListener('click', changeMode);
 }
 
-initializeButtons();
+startGame();
+
+export { initializeButtons };
