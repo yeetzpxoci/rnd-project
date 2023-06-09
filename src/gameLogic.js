@@ -1,7 +1,6 @@
 function letter(letter) {
     return {
         letter: letter,
-        point: 0,
         x: 0,
         y: 0, 
     }
@@ -25,7 +24,6 @@ function game() {
 
             let randomX = Math.floor(Math.random() * (window.innerWidth - 200)) + 100;
             let randomY = Math.floor(Math.random() * (window.innerHeight - 200)) + 100;
-            console.log(window.innerWidth, window.innerHeight)
 
             const gap = 200;
 
